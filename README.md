@@ -4,9 +4,7 @@ Centerprise 2.0 is the next iteration of a web application for handling Centers 
 
 ## Getting Started
 
-This documentation is intended to aid with a basic remote-pull and local spin-up of Centerprise 2.0
-
-Please see deployment for notes on how to deploy the project on a live production.
+This documentation is intended to aid with a basic remote pull-down and local spin-up of Centerprise 2.0
 
 
 ## Table of Contents
@@ -27,10 +25,10 @@ Please see deployment for notes on how to deploy the project on a live productio
   * [🔀 Credit Card Allocations](#credit-allocations)
   * [🔀 AP Rep Pending Allocations](#pending-allocations)
   * [🔀 Facilities](#facilities)
-  * [🔀 Deployment](#department)
+  * [🔀 Departments](#departments)
   * [🔀 Unit](#unit)
 - [🔌 Third Party Plugins](#plugins)
-- [Test](#tests)
+- [Tests](#tests)
 - [Version](#version)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgments)
@@ -135,7 +133,7 @@ until finished
 	* [] New Facility Subgroup
 	* [] Email Facility
 
-### Department
+### Departments
 	* [] Department
 	* [] New Department
 	* [] New Department Group
