@@ -16,21 +16,21 @@ Please see deployment for notes on how to deploy the project on a live productio
 - [About](#about)
 - [Install](#install)
 - [TODO](#todo)
-  * [🔀 Security](#%F0%9F%94%80-security)
-  * [🔀 Invoices](#%F0%9F%94%80-invoices)
-  * [🔀 Payroll](#%F0%9F%94%80-payroll)
-  * [🔀 ACH](#%F0%9F%94%80-ach)
-  * [🔀 Details](#%F0%9F%94%80-details)
-  * [🔀 Receivables](#%F0%9F%94%80-receivables)  
-  * [🔀 Distribution](#%F0%9F%94%80-distributions)
-  * [🔀 Credit Card Data](#%F0%9F%94%80-credit-data)
-  * [🔀 Credit Card Allocations](#%F0%9F%94%80-credit-allocations)
-  * [🔀 AP Rep Pending Allocations](#%F0%9F%94%80-pending-allocations)
-  * [🔀 Facilities](#%F0%9F%94%80-facilities)
-  * [🔀 Deployment](#%F0%9F%94%80-department)
-  * [🔀 Unit](#%F0%9F%94%80-unit)
-- [🔌 Third Party Plugins](#%F0%9F%94%8C-plugins)
-- [Test](#testing)
+  * [Security](#security)
+  * [🔀 Invoices](#invoices)
+  * [🔀 Payroll](#payroll)
+  * [🔀 ACH](#ach)
+  * [🔀 Details](#details)
+  * [🔀 Receivables](#receivables)  
+  * [🔀 Distribution](#distributions)
+  * [🔀 Credit Card Data](#credit-data)
+  * [🔀 Credit Card Allocations](#credit-allocations)
+  * [🔀 AP Rep Pending Allocations](#pending-allocations)
+  * [🔀 Facilities](#facilities)
+  * [🔀 Deployment](#department)
+  * [🔀 Unit](#unit)
+- [🔌 Third Party Plugins](#plugins)
+- [Test](#tests)
 - [Version](#version)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgments)
@@ -38,7 +38,7 @@ Please see deployment for notes on how to deploy the project on a live productio
 </details>
 
 ## About
-------------------
+
 Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
 
 ## Install
@@ -58,8 +58,6 @@ until finished
 ```
 
 ## TODO
-TODO:
------
 
 ### Security
 	* [] Security
@@ -154,8 +152,9 @@ Give details here
 ```
 
 ### Plugins
+
 Supporting Technology:
---------
+
 [Flask-Via](http://flask-via.soon.build/en/latest/):
 For create routes like a [Django Rest Framework](http://www.django-rest-framework.org) style using Blueprints!
 
@@ -184,7 +183,7 @@ And Selenium webdriver for front end testing
 - `python -m unittest discover -p <file.py>`: Test the specific file
 
 
-## Testing
+## Tests
 
 To run the automated tests for this Centerprise 2.0 please execute ...
 
