@@ -8,10 +8,25 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 ## Table of Contents
-<!-- AUTO-GENERATED-CONTENT:START (TOC:collapse=true&collapseText=Click to expand) -->
+<details>
+<summary>Click to expand</summary>
 
+- [About](#about)
+- [Install](#install)
+- [TODO](#todo)
+- [Transforms](#transforms)
+  * [🔀 Security](#%F0%9F%94%80-security)
+  * [🔀 Invoices](#%F0%9F%94%80-invoices)
+  * [🔀 Payroll](#%F0%9F%94%80-payroll)
+- [🔌 Third Party Plugins](#%F0%9F%94%8C-details)
+- [Adding Custom Transforms](#adding-custom-transforms)
+- [Plugin Example](#plugin-example)
+- [Other usage examples](#other-usage-examples)
+- [Custom Transform Demo](#custom-transform-demo)
+- [Prior Art](#prior-art)
+- [License](#license)
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+</details>
 
 ## About
 Centerprise 2.0
@@ -37,13 +52,13 @@ until finished
 ## TODO
 TODO:
 -----
+
 ### Security
-* [] Security
-    * [] User Login
-    * [] Role Assignment
-    * [] User Management
-    * [] Other Unknowns
-* [] Main Application
+	* [] Security
+		* [] User Login
+		* [] Role Assignment
+		* [] User Management
+	    * [] Other Unknowns
 
 ### Invoices
 	* [] Invoices
@@ -81,7 +96,6 @@ TODO:
     	* [] Monthly Facility GL Summary
 
 ### Receivables
-* [] Receivables
     * [] Receivables
     	* [] Filter/Reset Filter
     	* [] Print
@@ -91,37 +105,37 @@ TODO:
     * [] Cash Receipts
 
 ### Distributions
-* [] Distributions
-    * [] Lots
-    	* [] New Lot
     * [] Distributions
-    	* [] New Distribution
+    	* [] Lots
+    		* [] New Lots
+    	* [] Distributions
+    		* [] New Distribution
 
 ### Credit Data
-* [] Upload Credit Card Data
+	* [] Upload Credit Card Data
     * [] New Credit Card Data
 
 ### Credit Allocations
-* [] Credit Card Allocations
+	* [] Credit Card Allocations
     * [] New Credit Card Allocation
 
 ### Pending Allocations
-* [] AP Rep Pending Allocations
+	* [] AP Rep Pending Allocations
     * [] Create one instance of this in each blueprint
 
 ### Facilities
-* [] Facilities
+	* [] Facilities
 	* [] New Facility
 	* [] New Facility Subgroup
 	* [] Email Facility
 
 ### Deployment
-* [] Department
+	* [] Department
 	* [] New Department
 	* [] New Department Group
 
-### Unit Tests
-* []  Unit Tests
+### Unit
+	* []  Unit Tests
 
 
 ## Deployment
@@ -186,7 +200,7 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Versioning
+## Version
 
 Versioning of Centerprise follows Sematic Versioning 2.0.0 [SemVer](http://semver.org/).
 
