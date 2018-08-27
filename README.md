@@ -4,7 +4,9 @@ Centerprise 2.0 is the next iteration of a web application for handling Centers 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This documentation is intended to aid with a basic remote-pull and local spin-up of Centerprise 2.0
+
+Please see deployment for notes on how to deploy the project on a live production.
 
 
 ## Table of Contents
@@ -14,22 +16,28 @@ These instructions will get you a copy of the project up and running on your loc
 - [About](#about)
 - [Install](#install)
 - [TODO](#todo)
-- [Transforms](#transforms)
   * [🔀 Security](#%F0%9F%94%80-security)
   * [🔀 Invoices](#%F0%9F%94%80-invoices)
   * [🔀 Payroll](#%F0%9F%94%80-payroll)
-- [🔌 Third Party Plugins](#%F0%9F%94%8C-details)
-- [Adding Custom Transforms](#adding-custom-transforms)
-- [Plugin Example](#plugin-example)
-- [Other usage examples](#other-usage-examples)
-- [Custom Transform Demo](#custom-transform-demo)
-- [Prior Art](#prior-art)
-- [License](#license)
+  * [🔀 ACH](#%F0%9F%94%80-ach)
+  * [🔀 Details](#%F0%9F%94%80-details)
+  * [🔀 Receivables](#%F0%9F%94%80-receivables)  
+  * [🔀 Distribution](#%F0%9F%94%80-distributions)
+  * [🔀 Credit Card Data](#%F0%9F%94%80-credit-data)
+  * [🔀 Credit Card Allocations](#%F0%9F%94%80-credit-allocations)
+  * [🔀 AP Rep Pending Allocations](#%F0%9F%94%80-pending-allocations)
+  * [🔀 Facilities](#%F0%9F%94%80-facilities)
+  * [🔀 Deployment](#%F0%9F%94%80-department)
+  * [🔀 Unit](#%F0%9F%94%80-unit)
+- [🔌 Third Party Plugins](#%F0%9F%94%8C-plugins)
+- [Test](#testing)
+- [Version](#version)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgments)
 
 </details>
 
 ## About
-Centerprise 2.0
 ------------------
 Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
 
@@ -129,7 +137,7 @@ TODO:
 	* [] New Facility Subgroup
 	* [] Email Facility
 
-### Deployment
+### Department
 	* [] Department
 	* [] New Department
 	* [] New Department Group
@@ -139,9 +147,13 @@ TODO:
 
 
 ## Deployment
-In order to deploy this application on a live system ...
 
-### Prerequisites
+In order to deploy this application on a live system ...
+```
+Give details here 
+```
+
+### Plugins
 Supporting Technology:
 --------
 [Flask-Via](http://flask-via.soon.build/en/latest/):
