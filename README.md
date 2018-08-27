@@ -1,10 +1,17 @@
-# Project Title
+# Centerprise 2.0
 
-One Paragraph of project description goes here
+Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+
+## Table of Contents
+<!-- AUTO-GENERATED-CONTENT:START (TOC:collapse=true&collapseText=Click to expand) -->
+
+<!-- AUTO-GENERATED-CONTENT:END -->
+
 
 ### Prerequisites
 
