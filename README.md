@@ -116,27 +116,30 @@ until finished
     		* [] New Distribution
 
 ### Credit Data
-	* [] Upload Credit Card Data
-    * [] New Credit Card Data
+	* [] Credit Data
+		* [] Upload Credit Card Data
+    	* [] New Credit Card Data
 
 ### Credit Allocations
-	* [] Credit Card Allocations
-    * [] New Credit Card Allocation
+	* [] Credit Allocations
+		* [] Credit Card Allocations
+    	* [] New Credit Card Allocation
 
 ### Pending Allocations
-	* [] AP Rep Pending Allocations
-    * [] Create one instance of this in each blueprint
+	* [] Pending Allocations
+		* [] AP Rep Pending Allocations
+    	* [] Create one instance of this in each blueprint
 
 ### Facilities
 	* [] Facilities
-	* [] New Facility
-	* [] New Facility Subgroup
-	* [] Email Facility
+		* [] New Facility
+		* [] New Facility Subgroup
+		* [] Email Facility
 
 ### Departments
-	* [] Department
-	* [] New Department
-	* [] New Department Group
+	* [] Departments
+		* [] New Department
+		* [] New Department Group
 
 ### Unit
 	* []  Unit Tests
@@ -146,7 +149,7 @@ until finished
 
 In order to deploy this application on a live system ...
 ```
-Give details here 
+Details to come ...
 ```
 
 ### Plugins
@@ -190,7 +193,7 @@ To run the automated tests for this Centerprise 2.0 please execute ...
 Explain what these tests test and why
 
 ```
-Give an example
+Example to come ...
 ```
 
 ### Test 2
@@ -198,7 +201,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
+Example to come ...
 ```
 
 ### Test 3
@@ -206,7 +209,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
+Example to come ...
 ```
 
 ## Version
