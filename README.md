@@ -1,19 +1,18 @@
-#'Centerprise 2.0'
+# Project Title
 
-## About
-Centerprise 2.0
-------------------
-Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
+One Paragraph of project description goes here
 
 ## Getting Started
-------------------
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
 
-## Table of Contents
-<!-- AUTO-GENERATED-CONTENT:START (TOC) -->
+What things you need to install the software and how to install them
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```
+Give examples
+```
 
 ### Installing
 
@@ -31,115 +30,13 @@ And repeat
 until finished
 ```
 
-## Table of Contents
-<!-- AUTO-GENERATED-CONTENT:START (CODE:src=./) -->
+End with an example of getting some data out of the system or using it for a little demo
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+## Running the tests
 
-##TODO
-TODO:
------
-* [] Integration with existing Centerprise Security
-    * [] User Login
-    * [] Role Assignment
-    * [] User Management
-    * [] Other Unknowns
-* [] Main Application
-	* [] Invoices
-		* [] New Invoice
-		* [] Preview/Process ACH
-		* [] New Vendor
-	    * [] Advanced Search
-	    * [] View/Adjust Old Invoices
-	    * [] Export Invoices
-	    * [] Import Invoices
-	    * [] Compare Invoices
-	    * [] Allocate Incomplete Invoices
-	    * [] Delete Selected
-	    * [] Delete All
-    * [] Payroll
-    	* [] New Payroll Invoice
-    	* [] New Period
-    	* [] View/Adjust Old Invoices
-    	* [] Export Invoices
-    	* [] Update Totals
-    	* [] Delete Selected
-    * [] Pre-Scheduled ACH
-    	* [] New Pre-scheduled ACH
-    * [] Monthly Invoice Details
-    	* [] Print/View
-    	* [] Email
-    	* [] Summary PDF
-    	* [] Summary Excel
-    	* [] Monthly Facility GL Summary
-* [] Receivables
-    * [] Receivables
-    	* [] Filter/Reset Filter
-    	* [] Print
-    	* [] Excel
-    	* [] PDF
-    * [] Cash Receipt Batches
-    * [] Cash Receipts
-* [] Distributions
-    * [] Lots
-    	* [] New Lot
-    * [] Distributions
-    	* [] New Distribution
-* [] Upload Credit Card Data
-    * [] New Credit Card Data
-* [] Credit Card Allocations
-    * [] New Credit Card Allocation
-* [] AP Rep Pending Allocations
-    * [] Create one instance of this in each blueprint
-* [] Facilities
-	* [] New Facility
-	* [] New Facility Subgroup
-	* [] Email Facility
-* [] Department
-	* [] New Department
-	* [] New Department Group
-* []  Unit Tests
+Explain how to run the automated tests for this system
 
-
-##Deployment
-In order to deploy this application on a live system ...
-
-### Prerequisites
-Supporting Technology:
---------
-[Flask-Via](http://flask-via.soon.build/en/latest/):
-For create routes like a [Django Rest Framework](http://www.django-rest-framework.org) style using Blueprints!
-
-[Flask-Security](https://pythonhosted.org/Flask-Security/):
-To easily have login, logout, recovery password and to keep administrator views restricted.
-
-[Flask-Admin](https://flask-admin.readthedocs.io/en/latest/):
-An admin interface customizable for models and assets recources.
-
-**Add yours models in the file admin.py**
-
-[Flask-Upload](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/):
-Enables flask-upload in different blueprints and the ability to save the url of file in the database
-
-[Flask-Script](https://flask-script.readthedocs.io/en/latest/):
-Awesome commands for your projects, including the [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/) commands:
-- `createadmin`: Create admin user
-- `createapp`: Scaffold new  blueprint folder and register in the file app/routes.py
-
-[Rauth](https://rauth.readthedocs.io/en/latest/)
-Social Login with facebook, google and twitter
-
-[Flask-Testing](https://pythonhosted.org/Flask-Testing/)
-Simple test unit with [Faker](https://github.com/joke2k/faker) for generate forget data and unittest
-And Selenium webdriver for front end testing
-- `python -m unittest discover -p <file.py>`: Test the specific file
-
-
-## Testing
-
-To run the automated tests for this Centerprise 2.0 please execute ...
-
-### Test 1
+### Break down into end to end tests
 
 Explain what these tests test and why
 
@@ -147,7 +44,7 @@ Explain what these tests test and why
 Give an example
 ```
 
-### Test 2
+### And coding style tests
 
 Explain what these tests test and why
 
@@ -155,23 +52,36 @@ Explain what these tests test and why
 Give an example
 ```
 
-### Test 3
+## Deployment
 
-Explain what these tests test and why
+Add additional notes about how to deploy this on a live system
 
-```
-Give an example
-```
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
-Versioning of Centerprise follows Sematic Versioning 2.0.0 [SemVer](http://semver.org/).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Chinwendu Okoronkwo**
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Charly Jazz [Flask-MVC Template](https://github.com/CharlyJazz/Flask-MVC-Template)
-* David Wells [MarkDown Magic](https://github.com/DavidWells/markdown-magic)
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
