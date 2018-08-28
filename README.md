@@ -6,14 +6,13 @@ Centerprise 2.0 is the next iteration of a web application for handling Centers 
 
 This documentation is intended to aid with a basic remote pull-down and local spin-up of Centerprise 2.0
 
-
 ## Table of Contents
 <details>
 <summary>Click to expand</summary>
 
 - [About](#about)
 - [Install](#install)
-- [TODO](#todo)
+- [TODO](#todo)use
   * [Security](#security)
   * [Invoices](#invoices)
   * [Payroll](#payroll)
@@ -43,26 +42,57 @@ Centerprise 2.0 is the next iteration of a web application for handling Centers 
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+Steps to come ...
 
 ```
-Give the example
-```
 
-And repeat
-
-```
-until finished
 ```
 
 ## TODO
 
 ### Security
-	* [] Security
-		* [] User Login
-		* [] Role Assignment
-		* [] User Management
+	* [X] Security
+		* [X] User Login
+		* [X] Role Assignment
+		* [X] User Management
 	    * [] Other Unknowns
+
+<details>
+<summary>Security Notes</summary>
+
+- [Authentication](#user-authentication)
+<!--
+- [Install](#install)
+- [TODO](#todo)
+  * [Security](#security)
+  * [Invoices](#invoices)
+  * [Payroll](#payroll)
+  * [ACH](#ach)
+  * [Details](#details)
+  * [Receivables](#receivables)  
+  * [Distribution](#distributions)
+  * [Credit Card Data](#credit-data)
+  * [Credit Card Allocations](#credit-allocations)
+  * [AP Rep Pending Allocations](#pending-allocations)
+  * [Facilities](#facilities)
+  * [Departments](#departments)
+  * [Unit](#unit)
+- [🔌 Third Party Plugins](#plugins)
+- [Tests](#tests)
+- [Version](#version)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgments)
+-->
+
+## User Authentication
+
+Flask-Security has many native advanced authentication and user login management features - all of whcih can be controlled from the ./app.config.py file.  See [this article]https://pythonhosted.org/Flask-Security/configuration.html) for customization details.
+
+Default templates for security pages (login/logout/reset_password,etc) can be found in the following folder:
+```
+--centerprise2.0/app/templates/security/
+```
+</details>
 
 ### Invoices
 	* [] Invoices

@@ -1,0 +1,30 @@
+{% block login %}
+<!-- Login Section -->
+<section id="login" class="login-section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="text-white mb-4">Login</h2>
+        
+        {% if current_user.is_authenticated %}
+        
+        <h2 id="welcome-message">Hi, {{ current_user.username }}!</h2>
+        <p>Not {{ current_user.username }}? - <a href="{{ url_for('security.logout') }}">Logout</a></p>
+        
+        {% else %}
+        
+        <h2 class="text-white mb-4">Please login</h2>
+        <p><a href="{{ url_for('security.register') }}">Register</a></p>
+        <p><a href="{{ url_for('security.login') }}">Login</a></p>
+        <!--
+        <p><a href="{{ url_for('user.oauth_authorize', provider='facebook') }}">Login with Facebook</a></p>
+        <p><a href="{{ url_for('user.oauth_authorize', provider='twitter') }}">Login with Twitter</a></p>
+        <p><a href="{{ url_for('user.oauth_authorize', provider='google') }}">Login with Google</a></p>
+        -->
+        
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

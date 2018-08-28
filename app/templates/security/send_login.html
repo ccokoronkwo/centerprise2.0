@@ -1,0 +1,30 @@
+{% extends "layout/base.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+{% block content %}
+{% include "security/_messages.html" %}
+
+<header class="masthead">
+      <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto">
+        	{% include "security/_messages.html" %}
+
+			<form action="{{ url_for_security('login') }}" method="POST" name="send_login_form">
+				<div class="form-group">
+					<fieldset>
+						{{ send_login_form.hidden_tag() }}
+						{{ forgot_password_form.hidden_tag() }}
+						<legend class="h2">Login</legend>
+
+						<div class="form-group">
+							{{ render_field_with_errors(send_login_form.email) }}
+						</div>
+						{{ render_field(send_login_form.submit) }}
+					</fieldset>
+				</div>
+			</form>
+		{% include "security/_menu.html" %}
+		</div>
+	</div>
+</header>
+{% endblock %}
