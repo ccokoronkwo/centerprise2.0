@@ -99,10 +99,10 @@ cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
 
 ```
 (cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ python run.py
- &ast; Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
- &ast; Restarting with stat
- &ast; Debugger is active!
- &ast; Debugger PIN: 322-719-926
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 322-719-926
 ```
 
 ## TODO
@@ -117,7 +117,7 @@ cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
 <details>
 <summary>Security Notes</summary>
 
-- [Authentication](#user-authentication)
+- [User Authentication](#user-authentication)
 
 ## User Authentication
 
@@ -131,6 +131,7 @@ Default templates for security pages (login/logout/reset_password,etc) can be fo
 
 ### Invoices
 	* [] Invoices
+    * [] Invoice Menu
 		* [] New Invoice
 		* [] Preview/Process ACH
 		* [] New Vendor
