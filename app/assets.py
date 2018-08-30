@@ -2,10 +2,10 @@ from flask_assets import Bundle
 
 def create_assets(assets):
     js = Bundle(
-         'vendor/jquery/jquery.min.js',
-         'vendor/bootstrap/js/bootstrap.bundle.min.js',
-         'vendor/jquery-easing/jquery.easing.min.js',
          'js/grayscale.min.js',
+         'vendor/jquery/jquery.min.js',
+         'vendor/jquery-easing/jquery.easing.min.js',
+         'vendor/bootstrap/js/bootstrap.bundle.min.js',
          output='js/libs.js'
     )
     assets.register('JS_FRAMEWORS', js)

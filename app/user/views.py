@@ -32,7 +32,6 @@ class UserUploadView(MethodView):
             return redirect(url_for('user.profile'))
         return redirect(url_for('user.profile'))
 
-
 class OauthAuthorize(MethodView):
     def get(self, provider):
         if not current_user.is_anonymous:

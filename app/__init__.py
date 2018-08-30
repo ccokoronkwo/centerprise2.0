@@ -86,8 +86,7 @@ def create_app(config_name):
 
 
     @app.route('/', methods=['GET'])
-    @app.route('/home', methods=['GET'])
-    
+    @app.route('/home', methods=['GET'])    
     def index():
         return render_template('index.html')
 

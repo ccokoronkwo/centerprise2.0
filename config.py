@@ -27,7 +27,7 @@ class DevelopmentConfig(object):
     SECURITY_LOGIN_URL = '/login/'
     SECURITY_LOGOUT_URL = '/logout/'
     SECURITY_REGISTER_URL = '/register/'
-    SECURITY_POST_LOGIN_VIEW = "/"
+    SECURITY_POST_LOGIN_VIEW = "/food/profile.html"
     SECURITY_POST_LOGOUT_VIEW = "/"
     SECURITY_POST_REGISTER_VIEW = "/"
     SECURITY_LOGIN_USER_TEMPLATE = 'security/login.html'
