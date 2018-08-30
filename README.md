@@ -1,10 +1,10 @@
 # Centerprise 2.0
 
-Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
+Centerprise 2.0 is the next iteration of a web application for handling Centers Business to be .expenses and payroll allocation across owned and flat fee facilities.
 
 ## Getting Started
 
-This documentation is intended to aid with a basic remote pull-down and local spin-up of Centerprise 2.0
+This documentation is intended to aid with a basic remote pull-down, environment configuration, testing and deployment of Centerprise 2.0.  Documentation will include a break down of all known features of the existing application and the enhancements to be implemented.
 
 ## Table of Contents
 <details>
@@ -12,7 +12,7 @@ This documentation is intended to aid with a basic remote pull-down and local sp
 
 - [About](#about)
 - [Install](#install)
-- [TODO](#todo)use
+- [TODO](#todo)
   * [Security](#security)
   * [Invoices](#invoices)
   * [Payroll](#payroll)
@@ -36,16 +36,73 @@ This documentation is intended to aid with a basic remote pull-down and local sp
 
 ## About
 
-Centerprise 2.0 is the next iteration of a web application for handling Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities
+Centerprise 2.0 is a web application developed in Python (leveraging Flask).  Currently it is the last step in a monthly invoice entry, dispersement and facility allocation process.  After invoices, expense reimbersements, cedit cars invoices, payroll expenses have been downloaded and updated, Centerprise 2.0 will allocate all the CBO expenses to the facilities (and some sister companies) based on different allocation formulas per expense by GL Codes (excludes Flat Fee Facilities).
 
 ## Install
 
-A step by step series of examples that tell you how to get a development env running
+To install Centerprise 2.0 and its dependencies onto a server (from command line):
 
-Steps to come ...
+1. Navigate to the installation folder - typically this is the home directory of the system account used to launch application.
 
 ```
+cboadmin@dev-ubu-03:~$ cd
+```
 
+2. Create a source folder (or a folder to hold source files if one exists already)
+
+```
+cboadmin@dev-ubu-03:~$ mkdir src
+```
+
+3. Navigate to the source folder
+
+```
+cboadmin@dev-ubu-03:~$ cd src
+cboadmin@dev-ubu-03:~/src$
+```
+
+4. Initialize source folder for git
+
+```
+cboadmin@dev-ubu-03:~/src$ git init
+```
+
+5. Pull down the repo from github.
+
+```
+cboadmin@dev-ubu-03:~/src$ git clone https://github.com/ccokoronkwo/centerprise2.0.git centerprise2.0
+```
+
+6. Navigate to the cloned repo folder.
+
+```
+cboadmin@dev-ubu-03:~/src$ cd centerprise2.0
+```
+
+7. Install/update the virtualenv tool, build and activate an environment for the application.
+
+```
+cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo apt-get install python3-pip
+cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install virtualenv
+cboadmin@dev-ubu-03:~/src/centerprise2.0$ virtualenv cp2env
+cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
+(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$
+```
+
+8. Restore application packages.
+
+```
+(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install -r requirements.txt
+```
+
+9. Start application.
+
+```
+(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ python run.py
+ &ast; Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ &ast; Restarting with stat
+ &ast; Debugger is active!
+ &ast; Debugger PIN: 322-719-926
 ```
 
 ## TODO
@@ -61,32 +118,10 @@ Steps to come ...
 <summary>Security Notes</summary>
 
 - [Authentication](#user-authentication)
-<!--
-- [Install](#install)
-- [TODO](#todo)
-  * [Security](#security)
-  * [Invoices](#invoices)
-  * [Payroll](#payroll)
-  * [ACH](#ach)
-  * [Details](#details)
-  * [Receivables](#receivables)  
-  * [Distribution](#distributions)
-  * [Credit Card Data](#credit-data)
-  * [Credit Card Allocations](#credit-allocations)
-  * [AP Rep Pending Allocations](#pending-allocations)
-  * [Facilities](#facilities)
-  * [Departments](#departments)
-  * [Unit](#unit)
-- [🔌 Third Party Plugins](#plugins)
-- [Tests](#tests)
-- [Version](#version)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
--->
 
 ## User Authentication
 
-Flask-Security has many native advanced authentication and user login management features - all of whcih can be controlled from the ./app.config.py file.  See [this article]https://pythonhosted.org/Flask-Security/configuration.html) for customization details.
+Centerprise 2.0 uses Flask-Security for authentication, access and user management.  Flask-Security has many native advanced authentication and user login management features - all of which can be controlled from the ./app.config.py file.  See [this article](https://pythonhosted.org/Flask-Security/configuration.html) for customization options.
 
 Default templates for security pages (login/logout/reset_password,etc) can be found in the following folder:
 ```
