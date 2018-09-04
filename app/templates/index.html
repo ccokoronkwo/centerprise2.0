@@ -1,8 +1,14 @@
 {% extends 'layout/base.html' %}
 
-{% block content %}
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
+{% block head_content %}
+{% include 'layout/partials/head.html' %}
+{% endblock %}
+
+{% block menu_content %}
+{% include 'layout/partials/login_menu.html' %}
+{% endblock %}
+
+{% block body_content %}
         <div class="mx-auto text-center">
           <h1 class="mx-auto my-0 text-uppercase">Centerprise 2.0</h1>
           <h2 class="text-white-50 mx-auto mt-2 mb-5">Centers Business Office Invoices, Expenses and Payroll Allocation Across Facilities</h2>
@@ -12,26 +18,10 @@
             <p>Not {{ current_user.username }}? - <a href="{{ url_for('security.logout') }}">Logout</a></p>
           {% else %}
             <p><a href="{{ url_for('security.login') }}">Click Here to Login</a></p>
-          {% endif %}  
+          {% endif %}
         </div>
-      </div>
-    </header>
-<!--
-<div class="container">
-  <div class="page-header">
-    <h1>Flask MVC Template</h1>
-  </div>
-  <p class="lead">Flask-MVC Template It is a template with "batteries included" created for the fast development of applications in the microframework flask</p>
-  
-  {% if current_user.is_authenticated %}
-    <h2 id="welcome-message">Hi, {{ current_user.username }}!</h2>
-    <p><a href="{{ url_for('security.logout') }}">Logout</a></p>
-  {% else %}
-    <h2>I don't know you!</h2>
-    <p><a href="{{ url_for('user.oauth_authorize', provider='facebook') }}">Login with Facebook</a></p>
-    <p><a href="{{ url_for('user.oauth_authorize', provider='twitter') }}">Login with Twitter</a></p>
-    <p><a href="{{ url_for('user.oauth_authorize', provider='google') }}">Login with Google</a></p>
-  {% endif %}
-</div>
--->
+{% endblock %}
+
+{% block footer_content %}
+{% include 'layout/partials/footer.html' %}
 {% endblock %}
