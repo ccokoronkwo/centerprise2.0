@@ -1,4 +1,5 @@
 from wtforms import *
+from flask_wtf import FlaskForm as BaseForm
 from flask_security.forms import RegisterForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from . import user_photo
@@ -12,6 +13,6 @@ class SecurityRegisterForm(RegisterForm):
 
 # Form for demo of flask-upload
 
-class UserImageForm(Form):
+class UserImageForm(BaseForm):
     profile_photo = FileField('', validators=[FileRequired(), FileAllowed(user_photo, 'Images only!')])
     submit = SubmitField('Submit')

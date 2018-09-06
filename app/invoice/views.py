@@ -15,5 +15,4 @@ user_datastore = SQLAlchemyUserDatastore(db, FinalUser, Role)
 
 class MainView(MethodView):
     def get(self):
-        return render_template('invoices/main.html')
-
+        return render_template('invoices/index.html')

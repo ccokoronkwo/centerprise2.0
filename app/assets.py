@@ -11,7 +11,7 @@ def create_assets(assets):
     assets.register('JS_FRAMEWORS', js)
 
     css = Bundle(
-        #'vendor/bootstrap/css/bootstrap.min.css',
+        'vendor/bootstrap/css/bootstrap.css',
         'vendor/fontawesome-free/css/all.min.css',
         'css/grayscale.css',
         'css/sticky-footer.css',

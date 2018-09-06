@@ -44,8 +44,12 @@ class FinalUser(db.Model, UserMixin):
     confirmed_at = db.Column(db.DateTime())
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
 
 class FinalUserImage(BaseModel):
     user_id =  db.Column(db.Integer, db.ForeignKey('final_user.id'))
     image_filename = db.Column(db.String, default=None, nullable=True)
     image_url = db.Column(db.String, default=None, nullable=True)
+    def __repr__(self):
+        return '<FinalUserImage {}:{}>'.format(self.user_id,image_filename)

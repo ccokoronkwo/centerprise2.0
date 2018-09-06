@@ -13,6 +13,7 @@ This documentation is intended to aid with a basic remote pull-down, environment
 - [About](#about)
 - [Install](#install)
 - [TODO](#todo)
+  * [Database](#database)
   * [Security](#security)
   * [Invoices](#invoices)
   * [Payroll](#payroll)
@@ -106,6 +107,56 @@ cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
 ```
 
 ## TODO
+
+### Database
+<details>
+<summary>Database Notes</summary>
+
+- [Migration Repository](#migration-repository)
+- [Database Visualization](#database-visualization)
+
+## Migration Repository
+
+Centerprise 2.0 uses Flask-SQLALchemy and Flask-Migrate for ORM and database structure management tasks respectively.  Under the covers Flask-Migrate uses Alembic (migration repository maintenance software).  To create the migration repository by running to following command:
+```
+flask db init
+```
+To create the first database migration, to include the tables for the class objects which are not currently represented in the database schema:
+```
+flask db migrate -m "users table"
+flask db upgrade
+```
+
+## Database Visualization
+
+In order to understand the relationships between all of the existing database tables a diagram of the existing tables was generated using the [Schema Spy](https://schemaspy.readthedocs.io/en/latest/index.html) tool. You will also need the [Graphviz](https://graphviz.gitlab.io/_pages/Download/Download_windows.html) tool.  Next, create a directory from which you will run the command to generate the diagram.  Move the postgresql jar drivers and schemaspy executable jar file into that directory and create a properties file with values similar to this:
+
+```
+# type of database. Run with -dbhelp for details
+schemaspy.t=pgsql
+# optional path to alternative jdbc drivers.
+schemaspy.dp=postgresql-42.2.5.jar
+# database properties: host, port number, name user, password
+schemaspy.host=localhost
+schemaspy.port=5433
+schemaspy.db=cp2_test
+schemaspy.u=postgres
+schemaspy.p=Sunshine1
+# output dir to save generated files
+schemaspy.o=.\dump
+# db scheme for which generate diagrams
+schemaspy.s=public
+```
+
+In order to expose remote access to the postgres database sitting on the development box (DEV-UBU-03) a tunnel was created through the ssh connection used to connect to the development box, similar to the description found [here](https://www.linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/).
+After a tunnel is created (with exposed port 5433) and the remote database server is added to pgAdmin as a new server, from within the above created directory run the following command is run to generate the diagram.
+
+```
+java -jar schemaspy-6.0.0.jar -configFile schemaspy.properties
+```
+Schema will be output to the folder specified in the properties file.
+
+</details>
 
 ### Security
 	* [X] Security
