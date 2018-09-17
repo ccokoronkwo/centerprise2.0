@@ -11,27 +11,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Centerprise - 2.0</title>
     <!-- Head_Content -->
-    {% block head_content %}{% endblock %}    
-    
-
+    {% block head_content %}{% endblock %}
   </head>
 
   <body id="page-top">
-    <!-- Menu_Content -->
-    {% block menu_content %}{% endblock %}
+    <div class="container-fluid">
+        <!-- Main_Menu_Content -->
+        {% block main_menu_content %}{% endblock %}
+        
+        <!-- Login_Menu_Content -->
+        {% block login_menu_content %}{% endblock %}
 
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
+        <!-- Snapshot_Content -->
+        {% block snapshot_content %}{% endblock %}
 
-    
         <!-- Body_Content -->
         {% block body_content %}{% endblock %}
 
-
-      </div>
-    </header>
-
-    <!-- Footer -->
-    {% block footer_content %}{% endblock %}
+        <!-- Footer_Content -->
+        {% block footer_content %}{% endblock %}
+    </div>
   </body>
 </html>

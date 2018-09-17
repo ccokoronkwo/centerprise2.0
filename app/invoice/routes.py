@@ -1,7 +1,7 @@
 from flask_via.routers.default import Pluggable
-from app.invoices.views import *
+from app.invoice.views import MainView
 
 #The class objects defined in views are mapped to app urls using Pluggable
 routes = [
-    Pluggable('/invoices/', MainView, 'main')
+    Pluggable('/invoice/', MainView, 'index')
 ]

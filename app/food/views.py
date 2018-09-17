@@ -1,6 +1,7 @@
 from flask import request, url_for, redirect, render_template, current_app
 from flask.views import MethodView
-from ..models import FinalUserImage, db
+from ..models import db
+from ..models.user_image import UserImage
 from app.food.forms import FoodImageForm
 from flask_security import current_user
 from . import food_photo
@@ -17,7 +18,7 @@ class FoodUploadView(MethodView):
     def post(self):
         if 'food_photo' in request.files:
             filename = food_photo.save(request.files['food_photo'])
-            image = FinalUserImage(user_id=current_user.id,
+            image = UserImage(user_id=current_user.id,
                                    image_filename=filename,
                                    image_url=current_app.config['UPLOADED_FOOD_DEST'][11:] + "/" + filename)
             db.session.add(image)

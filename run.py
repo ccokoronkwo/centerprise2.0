@@ -1,9 +1,15 @@
 # coding=utf-8
+import os.path
+import sys
+
+sys.path.append('.')
 
 from app import create_app
 
 app = create_app('development')
+app.test_request_context().push()
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', port=8000, debug=True)
-    app.run(debug=True,host='0.0.0.0')
+    #app.run(debug=True,host='0.0.0.0')
+    app.run()

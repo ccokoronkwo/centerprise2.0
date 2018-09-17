@@ -4,14 +4,21 @@
 {% include 'layout/partials/head.html' %}
 {% endblock %}
 
-{% block menu_content %}
+{% block main_menu_content %}
 {% include 'layout/partials/main_menu.html' %}
 {% endblock %}
 
 {% block body_content %}
-<div class="mx-auto text-center">
-	<h4>Main Invoices View</h4>
-</div>
+<header class="masthead">
+      <div> 
+        <div>
+			{% block snpashot_content %}
+			{% include 'layout/partials/snapshot.html' %}
+			{% endblock %}        	
+        	<h4>Main Invoices View</h4>
+        </div>
+    </div>
+</header>
 
 {% endblock %}
 

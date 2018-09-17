@@ -13,6 +13,7 @@ This documentation is intended to aid with a basic remote pull-down, environment
 - [About](#about)
 - [Install](#install)
 - [TODO](#todo)
+  * [Database](#database)
   * [Security](#security)
   * [Invoices](#invoices)
   * [Payroll](#payroll)
@@ -76,29 +77,30 @@ cboadmin@dev-ubu-03:~/src$ git clone https://github.com/ccokoronkwo/centerprise2
 6. Navigate to the cloned repo folder.
 
 ```
-cboadmin@dev-ubu-03:~/src$ cd centerprise2.0
+cboadmin@dev-ubu-03:~/src$ cd centerprise2
 ```
 
 7. Install/update the virtualenv tool, build and activate an environment for the application.
 
 ```
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo apt-get install python3-pip
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install virtualenv
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ virtualenv cp2env
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$
+cboadmin@dev-ubu-03:~/src/centerprise2$ sudo apt-get install python3-pip
+cboadmin@dev-ubu-03:~/src/centerprise2$ sudo pip3 install virtualenv
+cboadmin@dev-ubu-03:~/src/centerprise2$ virtualenv cp2_venv
+cboadmin@dev-ubu-03:~/src/centerprise2$ source cp2_venv/bin/activate
+(cp2_venv)cboadmin@dev-ubu-03:~/src/centerprise2$
 ```
 
 8. Restore application packages.
 
 ```
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install -r requirements.txt
+(cp2_venv)cboadmin@dev-ubu-03:~/src/centerprise2$ sudo pip3 install -r requirements.txt
 ```
+(NOTE: Necessary environment variables are automatically set inside of .env file and applied using python-dotenv.)
 
 9. Start application.
 
 ```
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ python run.py
+(cp2_venv) cboadmin@dev-ubu-03:~/centerprise2$ sudo flask run
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
@@ -106,6 +108,56 @@ cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
 ```
 
 ## TODO
+
+### Database
+<details>
+<summary>Database Notes</summary>
+
+- [Migration Repository](#migration-repository)
+- [Database Visualization](#database-visualization)
+
+## Migration Repository
+
+Centerprise 2.0 uses Flask-SQLALchemy and Flask-Migrate for ORM and database structure management tasks respectively.  Under the covers Flask-Migrate uses Alembic (migration repository maintenance software).  To create the migration repository by running to following command:
+```
+flask db init
+```
+To create the first database migration, to include the tables for the class objects which are not currently represented in the database schema:
+```
+flask db migrate -m "user/userimage/role/invoice tables"
+flask db upgrade
+```
+
+## Database Visualization
+
+In order to understand the relationships between all of the existing database tables a diagram of the existing tables was generated using the [Schema Spy](https://schemaspy.readthedocs.io/en/latest/index.html) tool. You will also need the [Graphviz](https://graphviz.gitlab.io/_pages/Download/Download_windows.html) tool.  Next, create a directory from which you will run the command to generate the diagram.  Move the postgresql jar drivers and schemaspy executable jar file into that directory and create a properties file with values similar to this:
+
+```
+# type of database. Run with -dbhelp for details
+schemaspy.t=pgsql
+# optional path to alternative jdbc drivers.
+schemaspy.dp=postgresql-42.2.5.jar
+# database properties: host, port number, name user, password
+schemaspy.host=localhost
+schemaspy.port=5433
+schemaspy.db=cp2_test
+schemaspy.u=postgres
+schemaspy.p=Sunshine1
+# output dir to save generated files
+schemaspy.o=.\dump
+# db scheme for which generate diagrams
+schemaspy.s=public
+```
+
+In order to expose remote access to the postgres database sitting on the development box (DEV-UBU-03) a tunnel was created through the ssh connection used to connect to the development box, similar to the description found [here](https://www.linode.com/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/).
+After a tunnel is created (with exposed port 5433) and the remote database server is added to pgAdmin as a new server, from within the above created directory run the following command is run to generate the diagram.
+
+```
+java -jar schemaspy-6.0.0.jar -configFile schemaspy.properties
+```
+Schema will be output to the folder specified in the properties file.
+
+</details>
 
 ### Security
 	* [X] Security
@@ -252,30 +304,50 @@ And Selenium webdriver for front end testing
 
 ## Tests
 
-To run the automated tests for this Centerprise 2.0 please execute ...
+Python REPL tests.
 
 ### Test 1
 
-Explain what these tests test and why
+Database connection and data retrieval
+Overcome the "RuntimeError: application not registered on db instance and no application bound to current context" by following one of the suggestions [here](https://www.reddit.com/r/flask/comments/3etj6y/af_sqlalchemy_db_instance/).
 
+Set the builtin test_request application context:
 ```
-Example to come ...
+#in run.py
+
+from app import create_app
+
+app = create_app('development')
+app.test_request_context().push()
+
+if __name__ == '__main__':
+    #app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(debug=True,host='0.0.0.0')
+```
+```
+#from Python REPL
+>>> from run import app
+>>> from app import FinalUser
+>>> fu = FinalUser.query.get(1)
+>>> fu
+<FinalUser> admin
+>>>
 ```
 
 ### Test 2
 
-Explain what these tests test and why
+Explain what this test is ...
 
 ```
-Example to come ...
+Example test to come ...
 ```
 
 ### Test 3
 
-Explain what these tests test and why
+Explain what this test is ...
 
 ```
-Example to come ...
+Example test to come ...
 ```
 
 ## Version

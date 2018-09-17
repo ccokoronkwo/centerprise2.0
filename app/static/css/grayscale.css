@@ -32,6 +32,7 @@
 }
 
 #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+  font-size: 2.5rem;
   outline: none;
   background-color: transparent;
 }
