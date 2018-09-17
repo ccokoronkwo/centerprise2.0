@@ -101,6 +101,10 @@ cboadmin@dev-ubu-03:~/src/centerprise2$ source cp2_venv/bin/activate
 
 ```
 (cp2_venv) cboadmin@dev-ubu-03:~/centerprise2$ sudo flask run
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 322-719-926
 ```
 
 ## TODO
@@ -165,7 +169,7 @@ Schema will be output to the folder specified in the properties file.
 <details>
 <summary>Security Notes</summary>
 
-- [Authentication](#user-authentication)
+- [User Authentication](#user-authentication)
 
 ## User Authentication
 
@@ -179,6 +183,7 @@ Default templates for security pages (login/logout/reset_password,etc) can be fo
 
 ### Invoices
 	* [] Invoices
+    * [] Invoice Menu
 		* [] New Invoice
 		* [] Preview/Process ACH
 		* [] New Vendor
