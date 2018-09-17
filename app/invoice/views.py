@@ -7,11 +7,13 @@ from flask_security.datastore import SQLAlchemyUserDatastore
 from app.user.forms import UserImageForm
 from app.user.oauth import OAuthSignIn
 
-from ..models import FinalUser, FinalUserImage, Role, db
+#from ..models.role import Role
+#from ..models.user import User
+#from ..models.user import UserImage
 # from . import user_photo
 # from .. import app
 
-user_datastore = SQLAlchemyUserDatastore(db, FinalUser, Role)
+#user_datastore = SQLAlchemyUserDatastore(db, User, UserImage, Role)
 
 class MainView(MethodView):
     def get(self):

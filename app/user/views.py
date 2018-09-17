@@ -7,11 +7,15 @@ from flask_security.datastore import SQLAlchemyUserDatastore
 from app.user.forms import UserImageForm
 from app.user.oauth import OAuthSignIn
 
-from ..models import FinalUser, FinalUserImage, Role, db
+from ..models.role import Role
+from ..models.user import User
+from ..models.user_image import UserImage
+from ..models import db
+
 from . import user_photo
 # from .. import app
 
-user_datastore = SQLAlchemyUserDatastore(db, FinalUser, Role)
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 class ProfileView(MethodView):
     def get(self):
@@ -24,7 +28,7 @@ class UserUploadView(MethodView):
     def post(self):
         if 'profile_photo' in request.files:
             filename = user_photo.save(request.files['profile_photo'])
-            image = FinalUserImage(user_id=current_user.id,
+            image = UserImage(user_id=current_user.id,
                                    image_filename=filename,
                                    image_url=current_app.config['UPLOADED_USER_DEST'][11:] + "/" + filename)
             db.session.add(image)

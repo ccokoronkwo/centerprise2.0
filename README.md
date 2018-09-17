@@ -77,33 +77,30 @@ cboadmin@dev-ubu-03:~/src$ git clone https://github.com/ccokoronkwo/centerprise2
 6. Navigate to the cloned repo folder.
 
 ```
-cboadmin@dev-ubu-03:~/src$ cd centerprise2.0
+cboadmin@dev-ubu-03:~/src$ cd centerprise2
 ```
 
 7. Install/update the virtualenv tool, build and activate an environment for the application.
 
 ```
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo apt-get install python3-pip
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install virtualenv
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ virtualenv cp2env
-cboadmin@dev-ubu-03:~/src/centerprise2.0$ source cp2env/bin/activate
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$
+cboadmin@dev-ubu-03:~/src/centerprise2$ sudo apt-get install python3-pip
+cboadmin@dev-ubu-03:~/src/centerprise2$ sudo pip3 install virtualenv
+cboadmin@dev-ubu-03:~/src/centerprise2$ virtualenv cp2_venv
+cboadmin@dev-ubu-03:~/src/centerprise2$ source cp2_venv/bin/activate
+(cp2_venv)cboadmin@dev-ubu-03:~/src/centerprise2$
 ```
 
 8. Restore application packages.
 
 ```
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ sudo pip3 install -r requirements.txt
+(cp2_venv)cboadmin@dev-ubu-03:~/src/centerprise2$ sudo pip3 install -r requirements.txt
 ```
+(NOTE: Necessary environment variables are automatically set inside of .env file and applied using python-dotenv.)
 
 9. Start application.
 
 ```
-(cp2env)cboadmin@dev-ubu-03:~/src/centerprise2.0$ python run.py
- &ast; Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
- &ast; Restarting with stat
- &ast; Debugger is active!
- &ast; Debugger PIN: 322-719-926
+(cp2_venv) cboadmin@dev-ubu-03:~/centerprise2$ sudo flask run
 ```
 
 ## TODO
@@ -123,7 +120,7 @@ flask db init
 ```
 To create the first database migration, to include the tables for the class objects which are not currently represented in the database schema:
 ```
-flask db migrate -m "users table"
+flask db migrate -m "user/userimage/role/invoice tables"
 flask db upgrade
 ```
 
@@ -302,30 +299,50 @@ And Selenium webdriver for front end testing
 
 ## Tests
 
-To run the automated tests for this Centerprise 2.0 please execute ...
+Python REPL tests.
 
 ### Test 1
 
-Explain what these tests test and why
+Database connection and data retrieval
+Overcome the "RuntimeError: application not registered on db instance and no application bound to current context" by following one of the suggestions [here](https://www.reddit.com/r/flask/comments/3etj6y/af_sqlalchemy_db_instance/).
 
+Set the builtin test_request application context:
 ```
-Example to come ...
+#in run.py
+
+from app import create_app
+
+app = create_app('development')
+app.test_request_context().push()
+
+if __name__ == '__main__':
+    #app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(debug=True,host='0.0.0.0')
+```
+```
+#from Python REPL
+>>> from run import app
+>>> from app import FinalUser
+>>> fu = FinalUser.query.get(1)
+>>> fu
+<FinalUser> admin
+>>>
 ```
 
 ### Test 2
 
-Explain what these tests test and why
+Explain what this test is ...
 
 ```
-Example to come ...
+Example test to come ...
 ```
 
 ### Test 3
 
-Explain what these tests test and why
+Explain what this test is ...
 
 ```
-Example to come ...
+Example test to come ...
 ```
 
 ## Version

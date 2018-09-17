@@ -2,7 +2,11 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.fileadmin import FileAdmin
 from wtforms.fields import PasswordField
-from app.models import *
+from .models import *
+from .models.user import User
+from .models.user_image import UserImage
+from .models.role import Role
+
 from flask_security import current_user
 
 # https://github.com/sasaporta/flask-security-admin-example/blob/master/main.py
@@ -44,5 +48,5 @@ class _Admin(Admin, UserAdmin):
 
 def create_security_admin(app, path):
     admin = _Admin(app, name='Centerprise 2.0', template_mode='bootstrap3')
-    admin.add_model_views([FinalUser, Role, FinalUserImage])
+    admin.add_model_views([User, Role, UserImage])
     admin.add_view(MyFileAdmin(path, '/static/', name='Static Files'))

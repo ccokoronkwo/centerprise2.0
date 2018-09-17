@@ -1,40 +1,60 @@
-from base import BaseModel
-from base import db
+from . import *
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
+from sqlalchemy.dialects.postgresql import ARRAY
 
-class Invoice(db.Model, CrudModel):
+class Invoice(db.Model):
+    __tablename__ = 'invoice'
     id = db.Column(db.Integer, primary_key=True)
-    vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id'))
-    department_id = db.Column(db.Integer, db.ForeignKey('department.id'))
-    payroll_period_id = db.Column(db.Integer, db.ForeignKey('payroll_period.id'))
-    department = db.relationship('Department', backref='invoices')
-    payroll_period = db.relationship('PayrollPeriod', backref="invoices")
-    subdepartment = db.Column(db.Text, default='')
-    vendor = db.relationship('Vendor', lazy="joined", backref=db.backref('invoices', lazy="dynamic"))
-    recurring = db.Column(db.Boolean)
-    recurring_without_amounts = db.Column(db.Boolean)
-    number = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    allocation = db.Column(db.Text)
+    amount = db.Column(db.Numeric(asdecimal=True, scale=2))
+    completed = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     date = db.Column(db.Date)
     date_posted = db.Column(db.Date)
-    amount = db.Column(db.Numeric(asdecimal=True, scale=2))
-    memo = db.Column(db.Text)
-    upload = db.Column(db.Text)
-    allocation = db.Column(db.Text)
-
-    other_entity_allocation = db.Column(db.Text)
-
-    groups = db.Column(postgresql.ARRAY(db.Text))
-    subgroups = db.Column(postgresql.ARRAY(db.Text))
-
-    facility_amounts = db.relationship('InvoiceFacilityAmount', cascade="all, delete-orphan")
-    original_invoice_id = db.Column(db.Integer, db.ForeignKey('invoice.id')) # for voids, adjusts
-
+    #department = db.relationship('Department', backref='invoices')
+    #department_id = db.Column(db.Integer, db.ForeignKey('department.id'))
+    #facility_amounts = db.relationship('InvoiceFacilityAmount', cascade="all, delete-orphan")
     flag = db.Column(db.Text, default='') # void,adjust, monthly-invoice
-    type = db.Column(db.Text, default='invoice') # invoice/payroll/ach
-
-    completed = db.Column(db.Boolean, default=True)
-    created_at = db.Column(db.Date, default=datetime.today())
     imported = db.Column(db.Boolean, default=False)
-    pass_through = db.Column(db.Boolean, default=False)
+    groups = db.Column(ARRAY(db.Text))
+    memo = db.Column(db.Text)
+    number = db.Column(db.Text)
+    other_entity_allocation = db.Column(db.Text)
+    #original_invoice_id = db.Column(db.Integer, db.ForeignKey('invoice.id')) # for voids, adjusts
+    #payroll_period_id = db.Column(db.Integer, db.ForeignKey('payroll_period.id'))
+    #payroll_period = db.relationship('PayrollPeriod', backref="invoices")
+    pass_through = db.Column(db.Boolean, default=False) # this value could be connected to a category instead of boolean    
+    recurring = db.Column(db.Boolean)
+    recurring_without_amounts = db.Column(db.Boolean)
+    subdepartment = db.Column(db.Text, default='')
+    subgroups = db.Column(ARRAY(db.Text))
+    type = db.Column(db.Text, default='invoice') # invoice/payroll/ach
+    upload = db.Column(db.Text)
+    #vendor = db.relationship('Vendor', lazy="joined", backref=db.backref('invoices', lazy="dynamic"))
+    #vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id'))
+    
+    #relationships:
+    user = db.relationship('User', back_populates='invoices')
+
+
+    def __repr__(self):
+        return '<Invoice: {self.id}, {self.allocation}, {self.amount}>'.format(self=self)
+
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
 
     def get_label(self, field, default_label):
         if field == 'pass_through':
@@ -282,7 +302,7 @@ class Invoice(db.Model, CrudModel):
         return [Invoice.general_ledger_details.any(GeneralLedgerDetail.general_ledger_code.has(db.or_(GeneralLedgerCode.code.contains(search_query),
                                                                                                       GeneralLedgerCode.description.contains(search_query))))]
 
-
+'''
     class Meta(CrudModel.Meta):
         display_fields = ('vendor', 'number', 'date', 
                           'date_posted', 'amount', 'flag')
@@ -294,3 +314,4 @@ class Invoice(db.Model, CrudModel):
 
     def __repr__(self):
         return "%s - %s (%s) %s" % (self.pretty_vendor(), self.number, self.amount, self.flag)
+'''

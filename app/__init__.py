@@ -1,7 +1,8 @@
 import sqlite3
 import os.path
 import sys
-sys.path.append("..")
+sys.path.append('..')
+sys.path.append('.')
 from flask import Flask, render_template, current_app
 from flask_assets import Environment
 from flask_wtf import CSRFProtect
@@ -12,18 +13,18 @@ from flask_uploads import configure_uploads
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy import create_engine
 
-from app.assets import create_assets
-from app.models import db, FinalUser, Role
-from app.user.forms import SecurityRegisterForm
+from .assets import create_assets
+from .models import *
+from .models.user import User
+from .models.role import Role
+
+from .user.forms import SecurityRegisterForm
 
 from config import app_config
 
-from app.admin import create_security_admin
+from .admin import create_security_admin
 
-
-
-
-user_datastore = SQLAlchemyUserDatastore(db, FinalUser, Role)
+from flask_migrate import Migrate
 
 
 def create_app(config_name):
@@ -43,11 +44,14 @@ def create_app(config_name):
 
     # Ipload in several models - - - -
 
-    from app.user import user_photo
-    from app.restaurant import restaurant_photo
-    from app.food import food_photo
+    from .user import user_photo
+    #from .restaurant import restaurant_photo
+    #from .food import food_photo
 
-    configure_uploads(app, (restaurant_photo, food_photo, user_photo))
+    
+    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    #configure_uploads(app, (restaurant_photo, food_photo, user_photo))
+    configure_uploads(app, (user_photo))
 
     engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
     if not database_exists(engine.url):
@@ -56,14 +60,12 @@ def create_app(config_name):
     security = Security(app, user_datastore, register_form=SecurityRegisterForm)
 
     create_security_admin(app=app, path=os.path.join(os.path.dirname(__file__)))
-
+    
     with app.app_context():
         db.init_app(app)
         #Conditionally create admin/end_user
         db.create_all()
         user_datastore.find_or_create_role(name='admin', description='Administrator')
-
-        db.session.commit()
         user_datastore.find_or_create_role(name='end-user', description='End user')
         db.session.commit()
 
@@ -80,9 +82,11 @@ def create_app(config_name):
 
         # Give one User has the "end-user" role, while the other has the "admin" role. (This will have no effect if the
         # Users already have these Roles.) Again, commit any database changes.
-        user_datastore.add_role_to_user('enduser@centershealthcare.com', 'end-user')
-        user_datastore.add_role_to_user('admin@centershealthcare.com', 'admin')
+        user_datastore.add_role_to_user('enduser@centershealthcare.org', 'end-user')
+        user_datastore.add_role_to_user('admin@centershealthcare.org', 'admin')
         db.session.commit()
+
+        migrate = Migrate(app,db)
 
 
     @app.route('/', methods=['GET'])
